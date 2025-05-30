@@ -1,15 +1,20 @@
 {
-  "name": "@example/basics",
-  "type": "module",
-  "version": "0.0.1",
-  "private": true,
+  "name": "everything-upgrade-tree-wiki",
+  "version": "1.0.0",
+  "description": "A fan-made wiki site for Everything Upgrade Tree on Roblox.",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "dev": "tailwindcss -i ./styles/tailwind.css -o ./public/styles/tailwind.css --watch",
+    "build": "tailwindcss -i ./styles/tailwind.css -o ./public/styles/tailwind.css --minify"
   },
-  "dependencies": {
-    "astro": "^5.8.1"
+  "keywords": [
+    "roblox",
+    "everything-upgrade-tree",
+    "wiki",
+    "tailwindcss"
+  ],
+  "author": "pokejoueur",
+  "license": "MIT",
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
   }
 }
