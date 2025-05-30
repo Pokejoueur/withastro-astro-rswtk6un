@@ -1,0 +1,107 @@
+---
+import '@fontsource-variable/inter';
+import Sidebar from '../components/Sidebar.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  currentPage?: string;
+}
+
+const { 
+  title, 
+  description = "Your comprehensive guide to the game mechanics and features.", 
+  currentPage = "Main" 
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <title>{title} | Game Wiki</title>
+  </head>
+  <body class="bg-neutral-50 text-neutral-900 dark:bg-neutral-900 dark:text-neutral-50 min-h-screen flex flex-col">
+    <Header currentPage={currentPage} />
+    <div class="flex flex-1 w-full max-w-[1920px] mx-auto">
+      <Sidebar currentPage={currentPage} />
+      <main class="flex-1 p-4 md:p-8 pt-24 md:ml-64">
+        <div class="max-w-4xl mx-auto">
+          <slot />
+        </div>
+      </main>
+    </div>
+    <Footer />
+
+    <script>
+      // Check for dark mode preference
+      const isDarkMode = localStorage.getItem('darkMode') === 'true' || 
+        (localStorage.getItem('darkMode') === null && 
+         window.matchMedia('(prefers-color-scheme: dark)').matches);
+      
+      if (isDarkMode) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --header-height: 4rem;
+    --sidebar-width: 16rem;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter Variable', 'Inter', system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* Smooth fade transitions for dark/light mode */
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body, body * {
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 4px;
+  }
+
+  html.dark ::-webkit-scrollbar-thumb {
+    background: #4b5563;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+  }
+
+  html.dark ::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
+  }
+</style>

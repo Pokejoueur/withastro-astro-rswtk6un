@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageNotFound from '../components/PageNotFound.astro';
+
+export const prerender = false;
+
+// Get the page path from the URL
+const { page } = Astro.params;
+const pageTitle = page?.replace(/-/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
+---
+
+<Layout title={pageTitle || 'Page Not Found'} currentPage={pageTitle || 'Not Found'}>
+  <PageNotFound />
+</Layout>

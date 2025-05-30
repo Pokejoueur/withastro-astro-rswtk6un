@@ -1,0 +1,80 @@
+---
+interface Item {
+  name: string;
+  url: string;
+}
+
+interface Props {
+  title: string;
+  items: Item[];
+  currentPage: string;
+}
+
+const { title, items, currentPage } = Astro.props;
+const groupId = `group-${title.toLowerCase().replace(/\s+/g, '-')}`;
+---
+
+<div class="mb-4">
+  <button 
+    class="flex items-center justify-between w-full text-left font-medium p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 group"
+    data-toggle-id={groupId}
+  >
+    <span>{title}</span>
+    <svg 
+      xmlns="http://www.w3.org/2000/svg" 
+      width="16" 
+      height="16" 
+      viewBox="0 0 24 24" 
+      fill="none" 
+      stroke="currentColor" 
+      stroke-width="2" 
+      stroke-linecap="round" 
+      stroke-linejoin="round" 
+      class="transform transition-transform duration-200 group-data-[open=true]:rotate-180"
+    >
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </button>
+  
+  <div id={groupId} class="mt-1 ml-2 space-y-1 hidden">
+    {items.map(item => {
+      const isActive = currentPage === item.name;
+      return (
+        <a 
+          href={item.url} 
+          class={`block py-2 px-3 rounded-md text-sm transition-colors ${
+            isActive 
+              ? 'bg-primary-50 text-primary-600 dark:bg-primary-900/20 dark:text-primary-400 font-medium' 
+              : 'hover:bg-neutral-100 dark:hover:bg-neutral-800'
+          }`}
+        >
+          {item.name}
+        </a>
+      );
+    })}
+  </div>
+</div>
+
+<script define:vars={{ groupId: groupId }}>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggleButton = document.querySelector(`[data-toggle-id="${groupId}"]`);
+    const content = document.getElementById(groupId);
+    
+    if (toggleButton && content) {
+      // Check if any child links are active
+      const hasActiveChild = Array.from(content.querySelectorAll('a'))
+        .some(link => link.classList.contains('bg-primary-50') || link.classList.contains('dark:bg-primary-900/20'));
+      
+      // If a child is active, expand the group by default
+      if (hasActiveChild) {
+        content.classList.remove('hidden');
+        toggleButton.dataset.open = 'true';
+      }
+      
+      toggleButton.addEventListener('click', () => {
+        content.classList.toggle('hidden');
+        toggleButton.dataset.open = content.classList.contains('hidden') ? 'false' : 'true';
+      });
+    }
+  });
+</script>

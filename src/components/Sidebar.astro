@@ -1,0 +1,138 @@
+---
+import SidebarGroup from './SidebarGroup.astro';
+import SearchBar from './SearchBar.astro';
+
+interface Props {
+  currentPage: string;
+}
+
+const { currentPage } = Astro.props;
+
+// Define the sidebar structure
+const sidebarGroups = [
+  {
+    title: "Main",
+    items: [
+      { name: "Main Baseplate", url: "/main-baseplate" },
+      { name: "Baseplates", url: "/baseplates" },
+      { name: "Currencies", url: "/currencies" },
+      { name: "Points", url: "/points" },
+      { name: "Prestige Points", url: "/prestige-points" }
+    ]
+  },
+  {
+    title: "Game Mechanics",
+    items: [
+      { name: "Mechanics", url: "/mechanics" },
+      { name: "Upgrades", url: "/upgrades" },
+      { name: "Everything Upgrade Tree Wiki", url: "/everything-upgrade-tree-wiki" },
+      { name: "Challenges", url: "/challenges" },
+      { name: "Mining", url: "/mining" },
+      { name: "Enchanting", url: "/enchanting" },
+      { name: "Achievements", url: "/achievements" },
+      { name: "Transcending", url: "/transcending" }
+    ]
+  },
+  {
+    title: "Levels & Progress",
+    items: [
+      { name: "Everything Levels", url: "/everything-levels" },
+      { name: "Everything EXP", url: "/everything-exp" },
+      { name: "Abyssal Levels", url: "/abyssal-levels" },
+      { name: "Level transformer", url: "/level-transformer" },
+      { name: "Leveling Center", url: "/leveling-center" },
+    ]
+  },
+  {
+    title: "Baseplates",
+    items: [
+      { name: "Alpha", url: "/alpha" },
+      { name: "Astronomy Baseplate", url: "/astronomy-baseplate" },
+      { name: "Astral Baseplate", url: "/astral-baseplate" },
+      { name: "Automation Baseplate", url: "/automation-baseplate" },
+      { name: "Beta Baseplate", url: "/beta-baseplate" },
+      { name: "Bonus Baseplate", url: "/bonus-baseplate" },
+      { name: "Donation Baseplate", url: "/donation-baseplate" },
+      { name: "Excavation Baseplate", url: "/excavation-baseplate" },
+      { name: "Hardcore Baseplate", url: "/hardcore-baseplate" },
+      { name: "Leaderboard Baseplate", url: "/leaderboard-baseplate" },
+      { name: "Lingo Baseplate", url: "/lingo-baseplate" },
+      { name: "Offline Baseplate", url: "/offline-baseplate" },
+      { name: "Points Baseplate", url: "/points-baseplate" },
+      { name: "Prestige Baseplate", url: "/prestige-baseplate" },
+      { name: "Quantum Computing Baseplate", url: "/quantum-computing-baseplate" },
+      { name: "Qubits Baseplate", url: "/qubits-baseplate" },
+      { name: "Transcend Baseplate", url: "/transcend-baseplate" },
+      { name: "Point-X Baseplate", url: "/point-x-baseplate" },
+    ]
+  },
+  {
+    title: "Special Systems",
+    items: [
+      { name: "Cards", url: "/cards" },
+      { name: "Chips", url: "/chips" },
+      { name: "Geld", url: "/geld" },
+      { name: "Global Chat", url: "/global-chat" },
+      { name: "Global Chat flairs", url: "/global-chat-flairs" },
+      { name: "Ions", url: "/ions" },
+      { name: "Materials", url: "/materials" },
+      { name: "Mature ATM Machine", url: "/mature-atm-machine" },
+      { name: "Very Mature ATM Machine", url: "/very-mature-atm-machine" },
+      { name: "Mystic Obelisk", url: "/mystic-obelisk" },
+      { name: "NPCs", url: "/npcs" },
+      { name: "Ore Mastery", url: "/ore-mastery" },
+      { name: "Periodic Table", url: "/periodic-table" },
+      { name: "Point-X", url: "/point-x" },
+      { name: "Research Center", url: "/research-center" },
+      { name: "Research Points", url: "/research-points" },
+      { name: "Reset Layers", url: "/reset-layers" },
+      { name: "Specials", url: "/specials" },
+      { name: "Synchronizer", url: "/synchronizer" },
+      { name: "Black Hole", url: "/black-hole" },
+    ]
+  },
+  {
+    title: "Other",
+    items: [
+      { name: "Extra Stuff", url: "/extra-stuff" },
+      { name: "FAQ", url: "/faq" },
+      { name: "Graveyard", url: "/graveyard" },
+      { name: "Guides", url: "/guides" },
+      { name: "Large Numbers List", url: "/large-numbers-list" },
+      { name: "Upcoming Content", url: "/upcoming-content" },
+      { name: "Updates", url: "/updates" },
+    ]
+  }
+];
+---
+
+<!-- Sidebar overlay (mobile only) -->
+<div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-40 hidden md:hidden"></div>
+
+<!-- Sidebar -->
+<aside id="sidebar" class="fixed top-0 left-0 z-40 h-screen w-64 pt-16 -translate-x-full md:translate-x-0 bg-white dark:bg-neutral-900 border-r border-neutral-200 dark:border-neutral-800 transition-transform duration-300 overflow-y-auto">
+  <div class="md:hidden p-4">
+    <SearchBar />
+  </div>
+  <nav class="p-4">
+    {sidebarGroups.map(group => (
+      <SidebarGroup 
+        title={group.title} 
+        items={group.items} 
+        currentPage={currentPage} 
+      />
+    ))}
+  </nav>
+</aside>
+
+<style>
+  #sidebar {
+    height: 100vh;
+    height: 100dvh;
+    scrollbar-width: thin;
+  }
+  
+  #sidebar::-webkit-scrollbar {
+    width: 4px;
+  }
+</style>

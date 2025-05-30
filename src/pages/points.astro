@@ -1,0 +1,191 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageCard from '../components/PageCard.astro';
+
+// Related pages
+const relatedPages = [
+  { 
+    title: "Main Baseplate",
+    description: "The primary baseplate that serves as the foundation of the game.",
+    url: "/main-baseplate",
+    icon: "baseplate"
+  },
+  { 
+    title: "Prestige Points",
+    description: "Learn about the next tier of currency after Points.",
+    url: "/prestige-points",
+    icon: "currency"
+  },
+  { 
+    title: "Points Baseplate",
+    description: "Discover the specialized baseplate dedicated to Points optimization.",
+    url: "/points-baseplate",
+    icon: "baseplate"
+  }
+];
+---
+
+<Layout title="Points" description="Information about Points - the primary currency in the game." currentPage="Points">
+  <article class="prose prose-lg dark:prose-invert max-w-none">
+    <h1 class="text-3xl font-bold mb-6">Points</h1>
+    
+    <div class="bg-neutral-100 dark:bg-neutral-800 p-4 rounded-lg mb-8">
+      <div class="flex items-center gap-2 text-neutral-600 dark:text-neutral-400 text-sm mb-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        Last updated: April 10, 2025
+      </div>
+      <p class="text-neutral-800 dark:text-neutral-200 font-medium">
+        Points are the primary currency in the game, used for purchasing upgrades and unlocking new features.
+      </p>
+    </div>
+    
+    <h2 class="text-2xl font-bold mt-8 mb-4">What Are Points?</h2>
+    <p>
+      Points are the fundamental currency of the game. They are generated automatically at a base rate, which can be increased through various upgrades, achievements, and mechanics. Points are required for nearly all early game progression and continue to be important throughout your journey.
+    </p>
+    
+    <div class="my-8 flex flex-col sm:flex-row gap-4">
+      <div class="flex-1 bg-neutral-100 dark:bg-neutral-800 p-4 rounded-lg">
+        <h3 class="font-bold text-lg mb-2">Base Generation</h3>
+        <p class="text-sm">
+          Initial production rate: 1 Point/second<br>
+          Can be increased through upgrades and multipliers
+        </p>
+      </div>
+      <div class="flex-1 bg-neutral-100 dark:bg-neutral-800 p-4 rounded-lg">
+        <h3 class="font-bold text-lg mb-2">Point Cap</h3>
+        <p class="text-sm">
+          Starting cap: 100 Points<br>
+          Increases with specific upgrades and achievements
+        </p>
+      </div>
+      <div class="flex-1 bg-neutral-100 dark:bg-neutral-800 p-4 rounded-lg">
+        <h3 class="font-bold text-lg mb-2">Offline Gain</h3>
+        <p class="text-sm">
+          Starts at 0% of online production<br>
+          Can be improved through the Offline Baseplate
+        </p>
+      </div>
+    </div>
+    
+    <h2 class="text-2xl font-bold mt-8 mb-4">Point Generation Methods</h2>
+    <div class="space-y-4">
+      <h3 class="text-xl font-medium">Passive Generation</h3>
+      <p>
+        The most basic form of Point generation is passive production. Your base generation rate is influenced by:
+      </p>
+      <ul class="space-y-2 ml-6 list-disc">
+        <li>Base multiplier (increases with upgrades)</li>
+        <li>Achievement bonuses</li>
+        <li>Special events multipliers</li>
+        <li>Prestige bonuses</li>
+        <li>Transcension effects</li>
+      </ul>
+      
+      <h3 class="text-xl font-medium mt-6">Active Methods</h3>
+      <p>
+        Besides passive generation, there are several active ways to earn Points:
+      </p>
+      <ul class="space-y-2 ml-6 list-disc">
+        <li><strong>Clicking:</strong> Manually clicking the Point button provides Points based on your click power</li>
+        <li><strong>Challenges:</strong> Completing challenges can reward large Point bonuses</li>
+        <li><strong>Mining:</strong> The mining system allows for resource gathering that can be converted to Points</li>
+        <li><strong>Achievements:</strong> One-time bonuses for reaching milestones</li>
+      </ul>
+    </div>
+    
+    <h2 class="text-2xl font-bold mt-8 mb-4">Points Formula</h2>
+    <div class="bg-neutral-100 dark:bg-neutral-800 p-4 rounded-lg my-4 font-mono text-sm overflow-x-auto">
+      <p>Base Points per Second = 1 × (1 + Basic Multiplier) × (1 + Achievement Multiplier) × Prestige Multiplier × Transcension Multiplier</p>
+    </div>
+    <p class="text-sm text-neutral-600 dark:text-neutral-400 mt-2">
+      This formula represents the standard calculation for Points generation. Additional factors may apply based on unlocked features.
+    </p>
+    
+    <h2 class="text-2xl font-bold mt-8 mb-4">Upgrade Path</h2>
+    <p>
+      The most efficient path for upgrading your Points generation is:
+    </p>
+    
+    <div class="overflow-x-auto mt-4">
+      <table class="w-full border-collapse">
+        <thead>
+          <tr class="bg-neutral-100 dark:bg-neutral-800">
+            <th class="border border-neutral-300 dark:border-neutral-700 px-4 py-2 text-left">Priority</th>
+            <th class="border border-neutral-300 dark:border-neutral-700 px-4 py-2 text-left">Upgrade</th>
+            <th class="border border-neutral-300 dark:border-neutral-700 px-4 py-2 text-left">Cost</th>
+            <th class="border border-neutral-300 dark:border-neutral-700 px-4 py-2 text-left">Effect</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-neutral-300 dark:border-neutral-700 px-4 py-2">1</td>
+            <td class="border border-neutral-300 dark:border-neutral-700 px-4 py-2">Basic Generator</td>
+            <td class="border border-neutral-300 dark:border-neutral-700 px-4 py-2">10 Points</td>
+            <td class="border border-neutral-300 dark:border-neutral-700 px-4 py-2">+1 Point/sec</td>
+          </tr>
+          <tr class="bg-neutral-50 dark:bg-neutral-800/50">
+            <td class="border border-neutral-300 dark:border-neutral-700 px-4 py-2">2</td>
+            <td class="border border-neutral-300 dark:border-neutral-700 px-4 py-2">Improved Efficiency</td>
+            <td class="border border-neutral-300 dark:border-neutral-700 px-4 py-2">50 Points</td>
+            <td class="border border-neutral-300 dark:border-neutral-700 px-4 py-2">×2 multiplier to all generation</td>
+          </tr>
+          <tr>
+            <td class="border border-neutral-300 dark:border-neutral-700 px-4 py-2">3</td>
+            <td class="border border-neutral-300 dark:border-neutral-700 px-4 py-2">Capacity Expansion</td>
+            <td class="border border-neutral-300 dark:border-neutral-700 px-4 py-2">100 Points</td>
+            <td class="border border-neutral-300 dark:border-neutral-700 px-4 py-2">×5 Point cap</td>
+          </tr>
+          <tr class="bg-neutral-50 dark:bg-neutral-800/50">
+            <td class="border border-neutral-300 dark:border-neutral-700 px-4 py-2">4</td>
+            <td class="border border-neutral-300 dark:border-neutral-700 px-4 py-2">Automation Basics</td>
+            <td class="border border-neutral-300 dark:border-neutral-700 px-4 py-2">250 Points</td>
+            <td class="border border-neutral-300 dark:border-neutral-700 px-4 py-2">25% offline production</td>
+          </tr>
+          <tr>
+            <td class="border border-neutral-300 dark:border-neutral-700 px-4 py-2">5</td>
+            <td class="border border-neutral-300 dark:border-neutral-700 px-4 py-2">Advanced Generator</td>
+            <td class="border border-neutral-300 dark:border-neutral-700 px-4 py-2">500 Points</td>
+            <td class="border border-neutral-300 dark:border-neutral-700 px-4 py-2">+5 Points/sec</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <h2 class="text-2xl font-bold mt-8 mb-4">Advanced Strategies</h2>
+    
+    <div class="bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-800 p-4 rounded-lg my-6">
+      <h3 class="text-xl font-medium text-primary-800 dark:text-primary-200 mb-2">Exponential Growth Strategy</h3>
+      <p class="text-neutral-700 dark:text-neutral-300">
+        Once you reach 1,000 Points, consider performing your first Prestige. This will reset your Points but provide a permanent multiplier to all future Point generation. The formula for determining the optimal time to Prestige is:
+      </p>
+      <div class="bg-white dark:bg-neutral-800 p-3 rounded mt-2 font-mono text-sm">
+        Optimal Prestige Point = √(current Points × 10)
+      </div>
+    </div>
+    
+    <div class="bg-accent-50 dark:bg-accent-900/20 border border-accent-200 dark:border-accent-800 p-4 rounded-lg my-6">
+      <h3 class="text-xl font-medium text-accent-800 dark:text-accent-200 mb-2">Synergy Focus</h3>
+      <p class="text-neutral-700 dark:text-neutral-300">
+        After unlocking multiple Baseplates, focus on upgrades that provide synergistic bonuses between systems. For example, the "Cross-System Amplifier" upgrade provides a multiplier based on the number of active Baseplates you have.
+      </p>
+    </div>
+  </article>
+  
+  <section class="mt-12 border-t border-neutral-200 dark:border-neutral-800 pt-8">
+    <h2 class="text-2xl font-bold mb-6">Related Pages</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      {relatedPages.map(page => (
+        <PageCard 
+          title={page.title} 
+          description={page.description} 
+          url={page.url}
+          icon={page.icon}
+        />
+      ))}
+    </div>
+  </section>
+</Layout>

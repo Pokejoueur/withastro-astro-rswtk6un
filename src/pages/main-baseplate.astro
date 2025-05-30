@@ -1,0 +1,173 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageCard from '../components/PageCard.astro';
+
+// Related pages
+const relatedPages = [
+  { 
+    title: "Points",
+    description: "Learn about the primary currency and how to maximize your points generation.",
+    url: "/points",
+    icon: "currency"
+  },
+  { 
+    title: "Baseplates",
+    description: "Discover all available baseplates and their unique functions.",
+    url: "/baseplates",
+    icon: "baseplate"
+  },
+  { 
+    title: "Upgrades",
+    description: "Explore the upgrade system to enhance your game progress.",
+    url: "/upgrades",
+    icon: "upgrade"
+  }
+];
+---
+
+<Layout title="Main Baseplate" description="Information about the Main Baseplate - the foundation of your game progress." currentPage="Main Baseplate">
+  <article class="prose prose-lg dark:prose-invert max-w-none">
+    <h1 class="text-3xl font-bold mb-6">Main Baseplate</h1>
+    
+    <div class="bg-neutral-100 dark:bg-neutral-800 p-4 rounded-lg mb-8">
+      <div class="flex items-center gap-2 text-neutral-600 dark:text-neutral-400 text-sm mb-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        Last updated: April 15, 2025
+      </div>
+      <p class="text-neutral-800 dark:text-neutral-200 font-medium">
+        The Main Baseplate is the primary foundation of your game progress. All other mechanics build upon this system.
+      </p>
+    </div>
+    
+    <h2 class="text-2xl font-bold mt-8 mb-4">Overview</h2>
+    <p>
+      The Main Baseplate is where your journey begins. It serves as the foundation for all other game mechanics and systems. All players start with access to the Main Baseplate, which allows for the generation of Points - the basic currency of the game.
+    </p>
+    
+    <div class="my-8 border-l-4 border-primary-500 pl-4 py-2 bg-primary-50 dark:bg-primary-900/20 rounded-r">
+      <p class="italic">
+        "The Main Baseplate is your first step toward infinite progress. Master it well, and all other systems will follow." — Game Tutorial
+      </p>
+    </div>
+    
+    <h2 class="text-2xl font-bold mt-8 mb-4">Key Features</h2>
+    <ul class="space-y-4">
+      <li class="flex items-start gap-3">
+        <div class="bg-primary-100 dark:bg-primary-900/40 p-2 rounded-full text-primary-600 dark:text-primary-400 mt-1">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <div>
+          <span class="font-medium">Points Generation</span>
+          <p class="text-neutral-700 dark:text-neutral-300 mt-1">
+            The Main Baseplate allows for basic Points generation, which can be upgraded through various mechanics.
+          </p>
+        </div>
+      </li>
+      <li class="flex items-start gap-3">
+        <div class="bg-primary-100 dark:bg-primary-900/40 p-2 rounded-full text-primary-600 dark:text-primary-400 mt-1">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <div>
+          <span class="font-medium">Basic Upgrades</span>
+          <p class="text-neutral-700 dark:text-neutral-300 mt-1">
+            Contains the fundamental upgrade tree that enhances your Points production and unlocks additional mechanics.
+          </p>
+        </div>
+      </li>
+      <li class="flex items-start gap-3">
+        <div class="bg-primary-100 dark:bg-primary-900/40 p-2 rounded-full text-primary-600 dark:text-primary-400 mt-1">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <div>
+          <span class="font-medium">Gateway to Other Baseplates</span>
+          <p class="text-neutral-700 dark:text-neutral-300 mt-1">
+            Progress in the Main Baseplate unlocks access to other specialized Baseplates that offer unique mechanics.
+          </p>
+        </div>
+      </li>
+    </ul>
+    
+    <h2 class="text-2xl font-bold mt-8 mb-4">Strategy Guide</h2>
+    <div class="space-y-4">
+      <p>
+        To effectively progress through the Main Baseplate, follow these strategies:
+      </p>
+      
+      <h3 class="text-xl font-medium mt-6 mb-2">Early Game (0-1000 Points)</h3>
+      <ol class="space-y-2 ml-6 list-decimal">
+        <li>Focus on purchasing the first tier of upgrades to boost your Points per second (PPS).</li>
+        <li>Save up for the "Automatic Generation" upgrade to continue earning Points while offline.</li>
+        <li>Complete the introductory achievements to earn bonus multipliers.</li>
+      </ol>
+      
+      <h3 class="text-xl font-medium mt-6 mb-2">Mid Game (1000-1M Points)</h3>
+      <ol class="space-y-2 ml-6 list-decimal">
+        <li>Unlock the Points Baseplate to gain access to specialized Points upgrades.</li>
+        <li>Begin working toward your first Prestige, which will significantly boost your production.</li>
+        <li>Invest in the "Synergy" upgrades to multiply your earnings across different mechanics.</li>
+      </ol>
+      
+      <h3 class="text-xl font-medium mt-6 mb-2">Late Game (1M+ Points)</h3>
+      <ol class="space-y-2 ml-6 list-decimal">
+        <li>Optimize your upgrade path to focus on exponential growth mechanics.</li>
+        <li>Unlock the Transcend Baseplate to access a new layer of progression.</li>
+        <li>Consider specialized strategies involving multiple Baseplates for maximum efficiency.</li>
+      </ol>
+    </div>
+    
+    <h2 class="text-2xl font-bold mt-8 mb-4">Unlockable Content</h2>
+    <table class="w-full border-collapse mb-8">
+      <thead>
+        <tr class="bg-neutral-100 dark:bg-neutral-800">
+          <th class="border border-neutral-300 dark:border-neutral-700 px-4 py-2 text-left">Requirement</th>
+          <th class="border border-neutral-300 dark:border-neutral-700 px-4 py-2 text-left">Unlocks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="border border-neutral-300 dark:border-neutral-700 px-4 py-2">100 Points</td>
+          <td class="border border-neutral-300 dark:border-neutral-700 px-4 py-2">Basic Upgrades Tier 2</td>
+        </tr>
+        <tr class="bg-neutral-50 dark:bg-neutral-800/50">
+          <td class="border border-neutral-300 dark:border-neutral-700 px-4 py-2">1,000 Points</td>
+          <td class="border border-neutral-300 dark:border-neutral-700 px-4 py-2">Points Baseplate</td>
+        </tr>
+        <tr>
+          <td class="border border-neutral-300 dark:border-neutral-700 px-4 py-2">10,000 Points</td>
+          <td class="border border-neutral-300 dark:border-neutral-700 px-4 py-2">Prestige Baseplate</td>
+        </tr>
+        <tr class="bg-neutral-50 dark:bg-neutral-800/50">
+          <td class="border border-neutral-300 dark:border-neutral-700 px-4 py-2">100,000 Points</td>
+          <td class="border border-neutral-300 dark:border-neutral-700 px-4 py-2">Automation Baseplate</td>
+        </tr>
+        <tr>
+          <td class="border border-neutral-300 dark:border-neutral-700 px-4 py-2">1,000,000 Points</td>
+          <td class="border border-neutral-300 dark:border-neutral-700 px-4 py-2">Transcend Baseplate</td>
+        </tr>
+      </tbody>
+    </table>
+  </article>
+  
+  <section class="mt-12 border-t border-neutral-200 dark:border-neutral-800 pt-8">
+    <h2 class="text-2xl font-bold mb-6">Related Pages</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      {relatedPages.map(page => (
+        <PageCard 
+          title={page.title} 
+          description={page.description} 
+          url={page.url}
+          icon={page.icon}
+        />
+      ))}
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,90 @@
+---
+import SearchBar from './SearchBar.astro';
+import ThemeToggle from './ThemeToggle.astro';
+
+interface Props {
+  currentPage: string;
+}
+
+const { currentPage } = Astro.props;
+
+// Breadcrumb logic
+const pagePath = currentPage.split(' > ');
+const breadcrumbs = pagePath.map((item, index) => {
+  return {
+    name: item,
+    url: index === 0 ? '/' : `/${item.toLowerCase().replace(/ /g, '-')}`,
+    isLast: index === pagePath.length - 1
+  };
+});
+---
+
+<header class="fixed top-0 left-0 right-0 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm z-30 border-b border-neutral-200 dark:border-neutral-800">
+  <div class="flex items-center justify-between h-16 px-4 md:px-8 max-w-[1920px] mx-auto">
+    <div class="flex items-center gap-4">
+      <!-- Mobile sidebar toggle -->
+      <button id="sidebar-toggle" class="md:hidden p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors" aria-label="Toggle sidebar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <!-- Logo -->
+      <a href="/" class="flex items-center font-bold text-xl text-primary-600 dark:text-primary-400">
+        <span class="hidden sm:inline">Game Wiki</span>
+        <span class="sm:hidden">GW</span>
+      </a>
+    </div>
+
+    <div class="flex-1 max-w-2xl mx-4 hidden md:block">
+      <SearchBar />
+    </div>
+
+    <div class="flex items-center gap-2">
+      <ThemeToggle />
+    </div>
+  </div>
+
+  <!-- Breadcrumbs -->
+  <div class="hidden md:flex items-center h-8 px-8 text-sm text-neutral-500 dark:text-neutral-400">
+    <div class="flex items-center">
+      {breadcrumbs.map((crumb, index) => (
+        <>
+          {index > 0 && (
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-2">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          )}
+          {crumb.isLast ? (
+            <span class="font-medium text-neutral-900 dark:text-neutral-100">{crumb.name}</span>
+          ) : (
+            <a href={crumb.url} class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">{crumb.name}</a>
+          )}
+        </>
+      ))}
+    </div>
+  </div>
+</header>
+
+<script>
+  // Mobile sidebar toggle
+  const sidebarToggle = document.getElementById('sidebar-toggle');
+  const sidebar = document.getElementById('sidebar');
+  const sidebarOverlay = document.getElementById('sidebar-overlay');
+  
+  if (sidebarToggle && sidebar && sidebarOverlay) {
+    sidebarToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('-translate-x-full');
+      sidebarOverlay.classList.toggle('hidden');
+      document.body.classList.toggle('overflow-hidden');
+    });
+    
+    sidebarOverlay.addEventListener('click', () => {
+      sidebar.classList.add('-translate-x-full');
+      sidebarOverlay.classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+    });
+  }
+</script>

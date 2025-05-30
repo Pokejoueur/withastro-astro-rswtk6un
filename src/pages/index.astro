@@ -1,0 +1,159 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageCard from '../components/PageCard.astro';
+
+// Featured categories
+const categories = [
+  {
+    title: "Main Features",
+    items: [
+      { 
+        title: "Main Baseplate",
+        description: "The primary baseplate that serves as the foundation of the game.",
+        url: "/main-baseplate",
+        icon: "baseplate"
+      },
+      { 
+        title: "Points",
+        description: "Learn about the primary currency and how to maximize your points generation.",
+        url: "/points",
+        icon: "currency"
+      },
+      { 
+        title: "Upgrades",
+        description: "Discover the different types of upgrades and their effects on gameplay.",
+        url: "/upgrades",
+        icon: "upgrade"
+      },
+      { 
+        title: "Everything Levels",
+        description: "Understand the leveling system and progression mechanics.",
+        url: "/everything-levels",
+        icon: "level"
+      }
+    ]
+  },
+  {
+    title: "Game Systems",
+    items: [
+      { 
+        title: "Mining",
+        description: "Learn about the mining mechanics, ores, and optimization strategies.",
+        url: "/mining",
+        icon: "special"
+      },
+      { 
+        title: "Transcending",
+        description: "Discover the benefits of transcending and when to perform a transcension.",
+        url: "/transcending",
+        icon: "special"
+      },
+      { 
+        title: "Challenges",
+        description: "Take on special challenges to earn unique rewards and bonuses.",
+        url: "/challenges",
+        icon: "special"
+      },
+      { 
+        title: "Black Hole",
+        description: "Understand the mechanics of the Black Hole and its effects on the game.",
+        url: "/black-hole",
+        icon: "special"
+      }
+    ]
+  }
+];
+
+// Get a list of recently updated pages (this would normally come from a database or CMS)
+const recentUpdates = [
+  {
+    title: "Mining",
+    description: "Added new ore types and mining strategies",
+    date: "2 days ago",
+    url: "/mining"
+  },
+  {
+    title: "Everything Upgrade Tree",
+    description: "Updated with new branches and upgrade paths",
+    date: "5 days ago",
+    url: "/everything-upgrade-tree-wiki"
+  },
+  {
+    title: "Transcending",
+    description: "Revised benefits and optimal timing guidelines",
+    date: "1 week ago",
+    url: "/transcending"
+  }
+];
+---
+
+<Layout title="Home" currentPage="Home">
+  <section class="mb-12 text-center">
+    <h1 class="text-4xl font-bold mb-4 bg-gradient-to-r from-primary-500 to-accent-500 bg-clip-text text-transparent">Game Wiki</h1>
+    <p class="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
+      Your comprehensive guide to all mechanics, features, and strategies. Find detailed information about everything in the game.
+    </p>
+  </section>
+  
+  {categories.map(category => (
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 flex items-center">
+        <span class="inline-block w-2 h-6 bg-primary-500 mr-3 rounded"></span>
+        {category.title}
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {category.items.map(item => (
+          <PageCard 
+            title={item.title} 
+            description={item.description} 
+            url={item.url}
+            icon={item.icon}
+          />
+        ))}
+      </div>
+    </section>
+  ))}
+  
+  <section class="mb-12">
+    <h2 class="text-2xl font-bold mb-6 flex items-center">
+      <span class="inline-block w-2 h-6 bg-accent-500 mr-3 rounded"></span>
+      Recent Updates
+    </h2>
+    <div class="bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-lg overflow-hidden">
+      <ul class="divide-y divide-neutral-200 dark:divide-neutral-700">
+        {recentUpdates.map(update => (
+          <li class="hover:bg-neutral-50 dark:hover:bg-neutral-800/80 transition-colors">
+            <a href={update.url} class="flex items-start justify-between p-4 sm:p-6">
+              <div>
+                <h3 class="font-medium text-lg">{update.title}</h3>
+                <p class="text-neutral-600 dark:text-neutral-400 text-sm mt-1">{update.description}</p>
+              </div>
+              <span class="text-xs text-neutral-500 whitespace-nowrap ml-4">{update.date}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div class="text-center mt-6">
+      <a href="/updates" class="inline-flex items-center text-primary-600 dark:text-primary-400 hover:underline">
+        View all updates
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    </div>
+  </section>
+  
+  <section class="mb-12 bg-gradient-to-r from-primary-50 to-accent-50 dark:from-primary-950/30 dark:to-accent-950/30 p-6 rounded-lg border border-primary-100 dark:border-primary-900/50">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+      <div>
+        <h2 class="text-2xl font-bold mb-2">New to the Game?</h2>
+        <p class="text-neutral-700 dark:text-neutral-300">Check out our beginner guides to get started quickly.</p>
+      </div>
+      <a href="/guides" class="bg-primary-600 hover:bg-primary-700 text-white py-2 px-6 rounded-md transition-colors inline-block">
+        View Guides
+      </a>
+    </div>
+  </section>
+</Layout>

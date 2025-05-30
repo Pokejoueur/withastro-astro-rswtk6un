@@ -1,0 +1,259 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageCard from '../components/PageCard.astro';
+
+// Group baseplates by category
+const baseplateCategories = [
+  {
+    title: "Core Baseplates",
+    description: "The fundamental baseplates that form the foundation of the game.",
+    baseplates: [
+      { 
+        title: "Main Baseplate",
+        description: "The primary baseplate that serves as the foundation of the game.",
+        url: "/main-baseplate",
+      },
+      { 
+        title: "Points Baseplate",
+        description: "Specialized baseplate focused on optimizing Points generation.",
+        url: "/points-baseplate",
+      },
+      { 
+        title: "Prestige Baseplate",
+        description: "Allows resetting for powerful permanent bonuses.",
+        url: "/prestige-baseplate",
+      },
+      { 
+        title: "Automation Baseplate",
+        description: "Provides tools to automate various game mechanics.",
+        url: "/automation-baseplate",
+      },
+    ]
+  },
+  {
+    title: "Resource Baseplates",
+    description: "Baseplates focused on resource gathering and management.",
+    baseplates: [
+      { 
+        title: "Mining Baseplate",
+        description: "Enables resource extraction and material processing.",
+        url: "/mining",
+      },
+      { 
+        title: "Excavation Baseplate",
+        description: "Advanced mining capabilities for rare materials.",
+        url: "/excavation-baseplate",
+      },
+      { 
+        title: "Astronomy Baseplate",
+        description: "Harness cosmic energy and celestial resources.",
+        url: "/astronomy-baseplate",
+      },
+      { 
+        title: "Astral Baseplate",
+        description: "Connect to the astral plane for unique bonuses.",
+        url: "/astral-baseplate",
+      },
+    ]
+  },
+  {
+    title: "Progress Baseplates",
+    description: "Baseplates that offer new progression systems.",
+    baseplates: [
+      { 
+        title: "Alpha",
+        description: "The first expansion baseplate with unique mechanics.",
+        url: "/alpha",
+      },
+      { 
+        title: "Beta Baseplate",
+        description: "Experimental mechanics for advanced players.",
+        url: "/beta-baseplate",
+      },
+      { 
+        title: "Transcend Baseplate",
+        description: "Ascend beyond normal limitations for powerful bonuses.",
+        url: "/transcend-baseplate",
+      },
+      { 
+        title: "Bonus Baseplate",
+        description: "Specializes in providing various bonuses to other systems.",
+        url: "/bonus-baseplate",
+      },
+    ]
+  },
+  {
+    title: "Specialized Baseplates",
+    description: "Baseplates with unique and niche mechanics.",
+    baseplates: [
+      { 
+        title: "Hardcore Baseplate",
+        description: "Challenging mechanics with significant rewards.",
+        url: "/hardcore-baseplate",
+      },
+      { 
+        title: "Offline Baseplate",
+        description: "Enhances progression while away from the game.",
+        url: "/offline-baseplate",
+      },
+      { 
+        title: "Leaderboard Baseplate",
+        description: "Competitive features and rankings.",
+        url: "/leaderboard-baseplate",
+      },
+      { 
+        title: "Donation Baseplate",
+        description: "Special features for supporters.",
+        url: "/donation-baseplate",
+      },
+    ]
+  },
+  {
+    title: "Advanced Baseplates",
+    description: "Late-game baseplates with complex mechanics.",
+    baseplates: [
+      { 
+        title: "Quantum Computing Baseplate",
+        description: "Harness quantum mechanics for exponential growth.",
+        url: "/quantum-computing-baseplate",
+      },
+      { 
+        title: "Qubits Baseplate",
+        description: "Generate and utilize Qubits for reality manipulation.",
+        url: "/qubits-baseplate",
+      },
+      { 
+        title: "Lingo Baseplate",
+        description: "Word-based mechanics and linguistic power.",
+        url: "/lingo-baseplate",
+      },
+      { 
+        title: "Point-X Baseplate",
+        description: "Mysterious baseplate with reality-altering properties.",
+        url: "/point-x-baseplate",
+      },
+    ]
+  }
+];
+---
+
+<Layout title="Baseplates" description="A comprehensive guide to all available baseplates and their functions." currentPage="Baseplates">
+  <article>
+    <h1 class="text-3xl font-bold mb-6">Baseplates</h1>
+    
+    <div class="bg-neutral-100 dark:bg-neutral-800 p-4 rounded-lg mb-8">
+      <p class="text-neutral-800 dark:text-neutral-200">
+        Baseplates are the fundamental systems that comprise the game's structure. Each baseplate provides unique mechanics, upgrades, and progression paths that work together to create a complex and rewarding experience.
+      </p>
+    </div>
+    
+    <h2 class="text-2xl font-bold mt-8 mb-6">Understanding Baseplates</h2>
+    <div class="prose prose-lg dark:prose-invert max-w-none mb-8">
+      <p>
+        Each baseplate represents a distinct system within the game. While they operate independently, baseplates often interact with each other to create synergistic effects. Most baseplates require specific conditions to unlock, typically involving progress in other systems.
+      </p>
+      
+      <p>
+        New players start with access to only the Main Baseplate. As you progress, you'll unlock additional baseplates that expand the game's complexity and provide new ways to advance.
+      </p>
+      
+      <div class="my-6 bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-800 p-4 rounded-lg">
+        <h3 class="text-xl font-medium text-primary-800 dark:text-primary-200 mb-2">Baseplate Synergies</h3>
+        <p class="text-neutral-700 dark:text-neutral-300">
+          Many baseplates provide bonuses that affect other systems. For optimal progress, focus on developing synergies between complementary baseplates rather than trying to advance all of them equally.
+        </p>
+      </div>
+    </div>
+    
+    {baseplateCategories.map(category => (
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold mb-4 flex items-center">
+          <span class="inline-block w-2 h-6 bg-primary-500 mr-3 rounded"></span>
+          {category.title}
+        </h2>
+        <p class="text-neutral-600 dark:text-neutral-400 mb-6">{category.description}</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {category.baseplates.map(baseplate => (
+            <PageCard 
+              title={baseplate.title} 
+              description={baseplate.description} 
+              url={baseplate.url}
+              icon="baseplate"
+            />
+          ))}
+        </div>
+      </section>
+    ))}
+    
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold mb-6">Baseplate Progression Path</h2>
+      
+      <div class="bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-lg p-6">
+        <p class="text-neutral-700 dark:text-neutral-300 mb-4">
+          The recommended unlock order for baseplates is shown below. This path provides the most efficient progression through the game:
+        </p>
+        
+        <div class="relative">
+          <!-- Vertical line -->
+          <div class="absolute left-4 top-6 bottom-0 w-0.5 bg-primary-200 dark:bg-primary-800"></div>
+          
+          <ol class="relative space-y-6">
+            <li class="ml-10 relative">
+              <!-- Circle marker -->
+              <div class="absolute -left-10 mt-1.5 w-6 h-6 rounded-full bg-primary-500 flex items-center justify-center">
+                <span class="text-white text-xs font-bold">1</span>
+              </div>
+              <h3 class="text-lg font-medium">Main Baseplate</h3>
+              <p class="text-neutral-600 dark:text-neutral-400 text-sm">Starting point for all players</p>
+            </li>
+            
+            <li class="ml-10 relative">
+              <div class="absolute -left-10 mt-1.5 w-6 h-6 rounded-full bg-primary-500 flex items-center justify-center">
+                <span class="text-white text-xs font-bold">2</span>
+              </div>
+              <h3 class="text-lg font-medium">Points Baseplate</h3>
+              <p class="text-neutral-600 dark:text-neutral-400 text-sm">Unlocks at 1,000 Points</p>
+            </li>
+            
+            <li class="ml-10 relative">
+              <div class="absolute -left-10 mt-1.5 w-6 h-6 rounded-full bg-primary-500 flex items-center justify-center">
+                <span class="text-white text-xs font-bold">3</span>
+              </div>
+              <h3 class="text-lg font-medium">Prestige Baseplate</h3>
+              <p class="text-neutral-600 dark:text-neutral-400 text-sm">Unlocks at 10,000 Points</p>
+            </li>
+            
+            <li class="ml-10 relative">
+              <div class="absolute -left-10 mt-1.5 w-6 h-6 rounded-full bg-primary-500 flex items-center justify-center">
+                <span class="text-white text-xs font-bold">4</span>
+              </div>
+              <h3 class="text-lg font-medium">Automation Baseplate</h3>
+              <p class="text-neutral-600 dark:text-neutral-400 text-sm">Unlocks at 100,000 Points or after first Prestige</p>
+            </li>
+            
+            <li class="ml-10 relative">
+              <div class="absolute -left-10 mt-1.5 w-6 h-6 rounded-full bg-primary-500 flex items-center justify-center">
+                <span class="text-white text-xs font-bold">5</span>
+              </div>
+              <h3 class="text-lg font-medium">Alpha</h3>
+              <p class="text-neutral-600 dark:text-neutral-400 text-sm">Unlocks after 3 Prestiges</p>
+            </li>
+            
+            <li class="ml-10 relative">
+              <div class="absolute -left-10 mt-1.5 w-6 h-6 rounded-full bg-primary-500 flex items-center justify-center">
+                <span class="text-white text-xs font-bold">6</span>
+              </div>
+              <h3 class="text-lg font-medium">Transcend Baseplate</h3>
+              <p class="text-neutral-600 dark:text-neutral-400 text-sm">Unlocks at 1M Points or 10 Prestige Points</p>
+            </li>
+          </ol>
+        </div>
+        
+        <p class="text-neutral-600 dark:text-neutral-400 mt-8 text-sm">
+          After unlocking these core baseplates, additional systems become available based on your specific progression path and play style preferences.
+        </p>
+      </div>
+    </section>
+  </article>
+</Layout>
